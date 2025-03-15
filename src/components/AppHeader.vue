@@ -10,10 +10,10 @@ const navbarItems = [
   <header class="header">
     <div class="app-container">
       <div class="flex-center-between gap-4">
-        <router-link to="/">Movie</router-link>
+        <router-link class="header__logo" to="/">Movie</router-link>
         <ul class="nav-list flex-center-between gap-4">
           <li v-for="item in navbarItems" :key="item.id" class="nav-list__item">
-            <router-link :to="item.path" class="nav-list__item-link">
+            <router-link :to="item.path" class="text-white nav-list__item-link">
               {{ item.name }}
             </router-link>
           </li>
@@ -23,9 +23,20 @@ const navbarItems = [
   </header>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 .header {
   padding: 12px;
-  background: #1e2324;
+  background: $black;
+  border-bottom: 1px solid $light-black;
+  // header__logo
+  &__logo {
+    @include font(2rem, 600, 2rem, $white);
+  }
+  .nav-list__item-link {
+    @include font(1rem, 600, 1rem, $light-black);
+    &.router-link-exact-active {
+      color: $white;
+    }
+  }
 }
 </style>
