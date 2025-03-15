@@ -1,0 +1,12 @@
+@mixin font($font, $fontWeight, $lineHeight, $color) {
+  font-family: 'Poppins', sans-serif;
+  font-size: $font;
+  font-weight: $fontWeight;
+  line-height: $lineHeight;
+  color: $color;
+}
+@mixin img-cover() {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
