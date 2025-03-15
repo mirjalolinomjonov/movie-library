@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "category": {
+      "label": "Popular",
+      "code": "popular"
+    },
+    "data": [
+      {
+        "id": 1,
+        "poster_image": "/img/1.jpg",
+        "title": "Titanlar hujumi: So'nggi hujum (anime, premyera, o'zbek tilida)",
+        "genre": ["Jangari", "Fantastika", "Multfilm", "Drama", "Anime", "Fentezi"],
+        "country": "Yaponiya",
+        "release_date": 2025,
+        "language": "O'zbekcha sinxron dublyaj",
+        "duration": "1:22.05",
+        "age_limit": "18+",
+        "description": "Erenning halokatli harakatlaridan so‘ng, uning do‘stlari va sobiq dushmanlari unga qarshi birlashadilar. Armin, Mikasa va tirik qolgan razvedka korpusi askarlari Reyner Braun hamda Marley armiyasining qolgan qismi bilan vaqtinchalik ittifoq tuzadilar. Insonlar va titanlar o‘rtasidagi qarama-qarshilik cho‘qqisiga yetadi.",
+        "like": 98,
+        "views": 155
+      },
+      {
+        "id": 2,
+        "poster_image": "/img/2.jpg",
+        "title": "72 soat: Doimo qalbimizda yashovchi shahid (premyera)",
+        "genre": ["Hind", "Jangari", "Tarixiy", "Hayotiy", " Drama"],
+        "country": "Hindiston",
+        "release_date": 2019,
+        "language": "O'zbekcha",
+        "duration": "2:10.00",
+        "age_limit": "16+",
+        "description": "Bu hikoya miltiqchi Jasvant Singx Ravatning hayotiga asoslangan. 55 yil muqaddam, 1962-yilgi Hindiston-Xitoy urushi paytida jang natijasi allaqachon hal qilingandek tuyulgan paytda, 4-Garxval miltiqchilar polkining jasur askari hamma qiyinchiliklarga qaramay, Arunachal-Pradeshdagi (o‘sha vaqtda NEFA chegarasi deb atalgan) Nurunang bazasida postni himoya qilish uchun yakka o‘zi jang olib bordi.",
+        "like": 5,
+        "views": 458
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "category": {
+      "label": "Series",
+      "code": "series"
+    },
+    "data": [
+      {
+        "id": 21,
+        "poster_image": "/img/3.jpg",
+        "title": "Persi jakson va olimpiadachilar barcha qismlari uzbek o'zbek tilida",
+        "genre": ["Fantastika", "Serial"],
+        "country": "AQSH",
+        "release_date": 2024,
+        "language": "O'zbek tilida",
+        "duration": "00:40.0",
+        "age_limit": "16+",
+        "description": "Yarim mabud Peppers Yakson Olimpiya mabudlar o'rtasidagi urushning oldini olish uchun Amerika bo'ylab qidiruvga rahbarlik qiladi.",
+        "like": 14,
+        "views": 781
+      }
+    ]
+  }
+]
