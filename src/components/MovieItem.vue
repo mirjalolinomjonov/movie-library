@@ -1,51 +1,62 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import VIcon from './common/VIcon.vue'
 import { useToast } from 'vue-toastification'
+import { turncate } from '@/utils/helpers'
+import { useStore } from 'vuex'
 
+const store = useStore()
 const toast = useToast()
 
-// DATA
-const link: string = 'https://picsum.photos/300/500'
-const isFavorite = ref<boolean>(false)
+// TYPES
+import type { IMovieItem } from '@/types'
+
+// PROPS
+defineProps<{ movie: IMovieItem }>()
 
 // METHODS
-function favorite(): void {
-  isFavorite.value = !isFavorite.value
-  if (isFavorite.value) {
+const isFavorite = (movieId: number): boolean => {
+  return store.state.favorites?.some((movie: IMovieItem) => movie.id === movieId)
+}
+// const getFavoriteById = (id: number) => favorites.value.find((movie: IMovieItem) => movie.id === id)
+function addToFavorites(payload: IMovieItem): void {
+  if (!isFavorite(payload.id)) {
+    store.commit('SET_TO_FAVORITES', payload)
     toast.success("Sevimlilar ro'yxatiga qo'shildi")
   } else {
+    store.commit('REMOVE_FROM_FAVORITES', payload.id)
     toast.warning("Sevimlilar ro'yxatidan olib tashlandi")
   }
 }
 </script>
 
 <template>
-  <article class="movie-item">
+  <article :title="movie.title" class="movie-item">
     <figure class="movie-item__figure">
-      <img :src="link" loading="lazy" alt="movie item" />
+      <img :src="movie.poster_image" loading="lazy" :alt="movie.title" />
       <div class="movie-item__icons flex-center-between gap-2 w-full">
         <span class="flex-col items-center gap-1">
-          25
+          {{ movie.views }}
           <VIcon name="eye" />
         </span>
         <span class="flex-col items-center gap-1">
-          1:20:05
+          {{ movie.duration }}
           <VIcon name="time" />
         </span>
         <button
-          @click="favorite"
+          @click="addToFavorites(movie)"
           class="flex-col items-center gap-1 favorite"
-          :class="{ active: isFavorite }"
+          :class="{ active: isFavorite(movie.id) }"
         >
-          365
+          {{ movie.like }}
           <VIcon name="favorite" />
         </button>
       </div>
     </figure>
     <figcaption class="movie-item__figcaption mt-2">
-      <router-link class="underline" to="/fds"> Lorem, ipsum dolor. </router-link>
-      <span class="movie-item__created-at mt-2">2025</span>
+      <router-link class="underline" :to="`/${movie.id}`">
+        {{ turncate(movie.title, 30, '...') }}
+      </router-link>
+      <span class="movie-item__created-at mt-2">{{ movie.release_date }}</span>
     </figcaption>
   </article>
 </template>
@@ -72,7 +83,7 @@ function favorite(): void {
     z-index: 2;
     bottom: 0;
     padding: 1rem 2rem;
-    background: linear-gradient(to top, #000, transparent);
+    background: linear-gradient(to top, #000, #0000001f);
     span,
     button {
       @include font(0.7rem, 400, 1rem, $white);
