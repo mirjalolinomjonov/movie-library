@@ -3,19 +3,15 @@ import { defineAsyncComponent, ref, onMounted, nextTick, watch } from 'vue'
 
 const vIcon = ref<HTMLElement | null>(null)
 
-const props = defineProps({
-  path: {
-    type: String,
-    default: '',
-  },
-  name: {
-    type: String,
-    required: true,
-  },
-  color: {
-    type: String,
-    default: '',
-  },
+interface IProps {
+  path?: string
+  name: string
+  color?: string
+}
+
+const props = withDefaults(defineProps<IProps>(), {
+  path: '',
+  color: '',
 })
 
 const Icon = defineAsyncComponent(() => {
@@ -25,6 +21,7 @@ const Icon = defineAsyncComponent(() => {
     return import(`@/assets/icons/${props.name}.svg`)
   }
 })
+
 watch(
   () => props.color,
   () => {
