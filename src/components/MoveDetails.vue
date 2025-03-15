@@ -1,27 +1,53 @@
 <script setup lang="ts">
-const detail = {
-  name: `Titanlar hujumi: So'nggi hujum (anime, premyera, o'zbek tilida)
-`,
-  genre: `Tarjima kinolar / Jangari / Fantastika / Multfilm / Drama / Anime / Fentezi`,
-  country: 'Yaponiya',
-  year: 2025,
-  language: `O'zbekcha sinxron dublyaj`,
-  time: '	2 soat 25 daqiqa',
-  age_limit: '18+',
+interface IProps {
+  poster_image: string
+  title: string
+  genre: string[]
+  country: string
+  release_date: number
+  language: string
+  duration: string
+  age_limit: string
 }
 
-const link: string = 'https://picsum.photos/300/500'
+defineProps<IProps>()
 </script>
 
 <template>
   <div class="detail flex gap-6">
     <figure class="detail__figure shrink-0">
-      <img :src="link" alt="" />
+      <img :src="poster_image" :alt="title" />
     </figure>
     <ul class="detail-list flex-col gap-2 w-full">
-      <li v-for="(value, key) in detail" :key="key" class="detail-list__item flex-center">
-        <span class="shrink-0">{{ key }}</span>
-        <span> {{ value }}</span>
+      <li class="detail-list__item flex-center">
+        <span class="shrink-0">Name</span>
+        <span> {{ title }}</span>
+      </li>
+      <li class="detail-list__item flex-center">
+        <span class="shrink-0">Genre</span>
+        <span>
+          <span v-for="(g, i) in genre" :key="i">{{ g }} / </span>
+        </span>
+      </li>
+      <li class="detail-list__item flex-center">
+        <span class="shrink-0">country</span>
+        <span> {{ country }}</span>
+      </li>
+      <li class="detail-list__item flex-center">
+        <span class="shrink-0">Release date</span>
+        <span> {{ release_date }}</span>
+      </li>
+      <li class="detail-list__item flex-center">
+        <span class="shrink-0">Language</span>
+        <span> {{ language }}</span>
+      </li>
+      <li class="detail-list__item flex-center">
+        <span class="shrink-0">Duration</span>
+        <span> {{ duration }}</span>
+      </li>
+      <li class="detail-list__item flex-center">
+        <span class="shrink-0">Age limit</span>
+        <span> {{ age_limit }}</span>
       </li>
     </ul>
   </div>
@@ -52,13 +78,13 @@ const link: string = 'https://picsum.photos/300/500'
       &:hover {
         background: #1d232c;
       }
-      span {
+      & > span {
         display: block;
         @include font(0.8rem, 500, 2rem, #798fa6);
         padding: 6px;
         &:first-child {
           font-size: 0.6rem;
-          width: 80px;
+          width: 120px;
           text-align: center;
           background: #304156;
           text-transform: uppercase;
